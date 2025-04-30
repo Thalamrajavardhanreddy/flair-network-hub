@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
@@ -6,12 +5,11 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { useToast } from "@/components/ui/toast";
+import { toast } from "@/components/ui/sonner";
 
 const AuthForm = () => {
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
-  const { toast } = useToast();
   
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -20,10 +18,7 @@ const AuthForm = () => {
     // Simulate authentication
     setTimeout(() => {
       setIsLoading(false);
-      toast({
-        title: "Success!",
-        description: "You have successfully signed in!",
-      });
+      toast("You have successfully signed in!");
       navigate("/");
     }, 1000);
   };

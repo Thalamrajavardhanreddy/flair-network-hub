@@ -1,16 +1,14 @@
-
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Textarea } from "@/components/ui/textarea";
 import { Image, X } from "lucide-react";
-import { useToast } from "@/components/ui/toast";
+import { toast } from "@/components/ui/sonner";
 
 const NewPostForm = () => {
   const [content, setContent] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
-  const { toast } = useToast();
   
   const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -35,10 +33,7 @@ const NewPostForm = () => {
       setIsSubmitting(false);
       setContent("");
       setSelectedImage(null);
-      toast({
-        title: "Success!",
-        description: "Your post has been published!",
-      });
+      toast("Your post has been published!");
     }, 1000);
   };
   
